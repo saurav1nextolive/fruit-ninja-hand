@@ -146,6 +146,10 @@ let gameOver = false;
 let imageLoadCount = 0;
 const totalImages = fruitImageFiles.length + 2; // fruits + sword + blast
 
+// Load sound effect
+const wingSound = new Audio('wing.wav');
+wingSound.preload = 'auto';
+
 // Responsive canvas
 function resizeCanvas() {
   width = window.innerWidth;
@@ -251,6 +255,8 @@ function gameLoop() {
         fruits.splice(i, 1);
         // Show blast effect for 0.2s
         blastEffects.push({x: bladeX, y: bladeY, size: f.size, time: Date.now()});
+        // Play wing sound
+        try { wingSound.currentTime = 0; wingSound.play(); } catch (e) {}
       }
     }
   }
