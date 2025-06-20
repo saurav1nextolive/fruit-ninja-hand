@@ -33,6 +33,10 @@ h1 {
   z-index: 0;
 }
 
+#webcam {
+  transform: scaleX(-1);
+}
+
 #gameCanvas {
   z-index: 1;
 }
@@ -357,7 +361,7 @@ camera.start();
 function onResults(results) {
   if (results.multiHandLandmarks.length > 0) {
     const indexTip = results.multiHandLandmarks[0][8]; // Index fingertip
-    bladeX = indexTip.x * width;
+    bladeX = (1 - indexTip.x) * width;
     bladeY = indexTip.y * height;
     isBladeActive = true;
   } else {
